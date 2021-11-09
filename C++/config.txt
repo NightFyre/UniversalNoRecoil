@@ -1,0 +1,22 @@
+Toggle Keys
+// 1 for Numpad keys | 2 for Function Keys
+keys = 1			
+
+Preset1
+// Default is 7
+recoilStrength1 = 7
+recoilDelay1 = 7
+
+Preset2
+// Default is 10
+recoilStrength2 = 10
+recoilDelay2 = 10   
+
+Preset3
+// Default is 15
+recoilStrength3 = 15
+recoilDelay3 = 15
+
+RapidFire
+// Default is 50
+rapidFireDelay = 50
