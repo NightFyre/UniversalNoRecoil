@@ -8,6 +8,6 @@
 #include <string>
 using namespace std;
 
-#include "console.h"
-#include "recoil.h"
-#include "config.h"
+#include "..\console\console.h"
+#include "..\methods\recoil.h"
+#include "..\methods\config.h"

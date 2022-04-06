@@ -139,17 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="config.cpp" />
-    <ClCompile Include="console.cpp" />
-    <ClCompile Include="recoil.cpp" />
+    <ClCompile Include="console\console.cpp" />
+    <ClCompile Include="methods\config.cpp" />
+    <ClCompile Include="methods\recoil.cpp" />
     <ClCompile Include="MAIN.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="config.h" />
-    <ClInclude Include="console.h" />
-    <ClInclude Include="recoil.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="console\console.h" />
+    <ClInclude Include="Header Files\resource.h" />
+    <ClInclude Include="Header Files\stdafx.h" />
+    <ClInclude Include="methods\config.h" />
+    <ClInclude Include="methods\recoil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UniversalNoRecoil.rc" />

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "..\Header Files\stdafx.h"
 
 void _loadConfig(Config& config, int& keyAssign)
 {

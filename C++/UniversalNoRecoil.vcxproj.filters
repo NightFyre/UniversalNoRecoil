@@ -13,42 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="console">
-      <UniqueIdentifier>{019227f2-0f3b-4900-82c0-29646709764f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="methods">
-      <UniqueIdentifier>{c6d5c361-4a20-4b4b-8d0f-64cdab96b0a9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MAIN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="console.cpp">
-      <Filter>console</Filter>
+    <ClCompile Include="console\console.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="recoil.cpp">
-      <Filter>methods</Filter>
+    <ClCompile Include="methods\config.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="config.cpp">
-      <Filter>methods</Filter>
+    <ClCompile Include="methods\recoil.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="console\console.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="console.h">
-      <Filter>console</Filter>
-    </ClInclude>
-    <ClInclude Include="recoil.h">
-      <Filter>methods</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="methods\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="config.h">
-      <Filter>methods</Filter>
+    <ClInclude Include="methods\recoil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\stdafx.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
