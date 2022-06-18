@@ -1,6 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include "Header Files/resource.h"
+#include "resource.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -52,7 +52,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "Untitled-1.ico"
+IDI_ICON1               ICON                    "icon\\NightFyre.ico"
 
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
