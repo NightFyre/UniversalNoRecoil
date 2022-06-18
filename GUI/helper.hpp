@@ -17,10 +17,10 @@
 #pragma comment(lib, "d3d11.lib")
 
 //	ImGui
-#include "ImGui/imgui.h"
-#include "ImGui/imgui_internal.h"
-#include "ImGui/imgui_impl_win32.h"
-#include "ImGui/imgui_impl_dx11.h"
+#include "../libs/ImGui/imgui.h"
+#include "../libs/ImGui/imgui_internal.h"
+#include "../libs/ImGui/imgui_impl_win32.h"
+#include "../libs/ImGui/imgui_impl_dx11.h"
 
 namespace UniCoil {
 	using namespace std::chrono_literals;
