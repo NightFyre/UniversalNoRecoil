@@ -4,9 +4,31 @@
 #include "DXWindow.hpp"
 namespace UniCoil {
 
+	struct Config {
+		int   key1;
+		int   recoilStrength[3];
+		int   recoilDelay[3];
+		int   rapidFireDelay[3];
+		bool  recoilADSFlag[3];
+		bool  rapidADSFlag[3];
+	};
+
 	class Launcher
 	{
 	public:
+		//	LAUNCHER
+		bool m_LauncherRunning{};		//	
+		bool m_ShowWindow{};			//	
+		bool m_DemoWindow{};			//	
+
+		//	MENU VARIABLES & FLAGS
+		bool m_MainMenu{};
+		bool m_MenuOptions{};
+
+		// Rainbow Variables
+		ImColor cRainbow;
+		ImVec2 BUTTONS{ 200, 30 };		//	Button Size
+
 		explicit Launcher();
 		~Launcher() noexcept = default;
 		Launcher(Launcher const&) = delete;
@@ -18,52 +40,46 @@ namespace UniCoil {
 		void Draw();								//	Main draw function
 		void Menu();
 		void MenuOptions();
+		void Loops();
 	};
 
-	class LauncherVariables
+	class Profile
 	{
 	public:
-		//	EXTERNAL PROCESS & WINDOW 
+		Config config{};
 		HINSTANCE hInstance{};			//	Variable for Process Icon
-
-		//	LAUNCHER
-		bool m_LauncherRunning{};		//	
-		bool m_ShowWindow{};			//	
-		bool m_DemoWindow{};			//	
-
-		//	MENU VARIABLES & FLAGS
-		bool m_MainMenu{};
-		bool m_MenuOptions{};
-
-		// Rainbow Variables
-		ImColor cRainbow;	
-		ImVec2 BUTTONS{ 200, 30 };		//	Button Size
 		ImVec4 m_CustomColors{};
-		std::vector<float> cfgColors{};
 
+		//	
 		int selectedPRESET;
-		const char* presets[3]{ "PRESET 1", "PRESET 2", "PRESET 3" };
+		int savePRESET;
+		const char* presets[4]{ "CONFIGURATION", "PRESET 1", "PRESET 2", "PRESET 3" };
+		const char* save_slots[3]{ "1", "2", "3" };
 
 		// Recoil Variables
-		bool bRAPID;
 		bool bRECOIL;
-		int recoilStrength1;
-		int recoilDelay1;
-		int recoilStrength2;
-		int recoilDelay2;
-		int recoilStrength3;
-		int recoilDelay3;
-		int rapidFireDelay;
+		bool bRECOIL_SETTINGS;
+		bool bADSFLAG_RECOIL;
+		int recoilStrength;
+		int recoilDelay;
 
+		bool bRAPID;
+		bool bRAPID_SETTINGS;
+		bool bADSFLAG_RAPID;
+		int rapidFireDelay;
+		
 		//	INIT
-		explicit LauncherVariables();
-		~LauncherVariables() noexcept = default;
-		LauncherVariables(LauncherVariables const&) = delete;
-		LauncherVariables(LauncherVariables&&) = delete;
-		LauncherVariables& operator=(LauncherVariables const&) = delete;
-		LauncherVariables& operator=(LauncherVariables&&) = delete;
+		explicit Profile();
+		~Profile() noexcept = default;
+		Profile(Profile const&) = delete;
+		Profile(Profile&&) = delete;
+		Profile& operator=(Profile const&) = delete;
+		Profile& operator=(Profile&&) = delete;
+
+		void UniCoil(int Speed, int Delay, bool flag = FALSE);
+		void RapidFire(int delay);
 	};
 
 	inline std::unique_ptr<Launcher> g_Launcher;
-	inline std::unique_ptr<LauncherVariables> g_LauncherVariables;
+	inline std::unique_ptr<Profile> g_Profile;
 }

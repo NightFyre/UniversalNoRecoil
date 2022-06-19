@@ -6,6 +6,9 @@
 #include <memory>
 #include <iostream>
 #include <tchar.h>
+#include <fstream>
+#include <sstream>
+#include <STDLIB.H>
 #include <string>
 #include <thread>
 #include <chrono>

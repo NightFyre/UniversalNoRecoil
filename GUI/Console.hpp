@@ -23,20 +23,15 @@ namespace UniCoil {
 
 	class Console {
 	public:
+		Colors color{};
 		FILE* stream_in{};
 		FILE* stream_out{};
 		FILE* stream_error{};
-
-		//	Open File Dialogue
-		std::string result;
-		std::vector<std::string> ActiveProcesses{};
 		HANDLE g_Handle{};
 		HWND g_hWnd{};
-		Colors color{};
 		bool verbose = false;
 
 		//	INPUT BUFFERS
-		char dlldir[320];
 		char input[32]{};
 		char input2[32]{};
 
@@ -53,7 +48,6 @@ namespace UniCoil {
 		void SaveCFG();
 		void LoadCFG();
 		void Free();
-
 	};
 	inline std::unique_ptr<Console> g_Console;
 }

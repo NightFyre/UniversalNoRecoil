@@ -44,10 +44,37 @@ namespace UniCoil {
 	{
 		std::ofstream fout;
 		fout.open("settings.ini", std::ios::trunc);
-		fout << g_LauncherVariables->m_CustomColors.x << "\n";
-		fout << g_LauncherVariables->m_CustomColors.y << "\n";
-		fout << g_LauncherVariables->m_CustomColors.z << "\n";
-		fout << g_LauncherVariables->m_CustomColors.w << std::endl;
+		fout << "MENU THEME\n";
+		fout << "//Colors range from 0 - 255\n";
+		fout << ("COLORR =" + std::to_string(g_Profile->m_CustomColors.x * 255)) + "\n";
+		fout << ("COLORG =" + std::to_string(g_Profile->m_CustomColors.y * 255)) + "\n";
+		fout << ("COLORB =" + std::to_string(g_Profile->m_CustomColors.z * 255)) + "\n";
+		fout << ("COLORA =" + std::to_string(g_Profile->m_CustomColors.w * 255)) + "\n\n";
+
+		fout << "Toggle Keys\n";
+		fout << "// 1 for Numpad keys | 2 for Function Keys\n";
+		fout << "keys = 1\n\n";
+
+		fout << "Preset1\n";
+		fout << "recoilStrength1 =" + std::to_string(g_Profile->config.recoilStrength[0]) + "\n";
+		fout << "recoilDelay1 =" + std::to_string(g_Profile->config.recoilDelay[0]) + "\n";
+		fout << "recoilADSFlag1 =" + std::to_string(g_Profile->config.recoilADSFlag[0]) + "\n";
+		fout << "rapidFireDelay1 =" + std::to_string(g_Profile->config.rapidFireDelay[0]) + "\n";
+		fout << "rapidADSFlag1 =" + std::to_string(g_Profile->config.rapidADSFlag[0]) + "\n\n";
+
+		fout << "Preset2\n";
+		fout << "recoilStrength2 =" + std::to_string(g_Profile->config.recoilStrength[1]) + "\n";
+		fout << "recoilDelay2 =" + std::to_string(g_Profile->config.recoilDelay[1]) + "\n";
+		fout << "recoilADSFlag2 =" + std::to_string(g_Profile->config.recoilADSFlag[1]) + "\n";
+		fout << "rapidFireDelay2 =" + std::to_string(g_Profile->config.rapidFireDelay[1]) + "\n\n";
+		fout << "rapidADSFlag2 =" + std::to_string(g_Profile->config.rapidADSFlag[2]) + "\n\n";
+
+		fout << "Preset3\n";
+		fout << "recoilStrength3 =" + std::to_string(g_Profile->config.recoilStrength[2]) + "\n";
+		fout << "recoilDelay3 =" + std::to_string(g_Profile->config.recoilDelay[2]) + "\n";
+		fout << "recoilADSFlag3 =" + std::to_string(g_Profile->config.recoilADSFlag[2]) + "\n";
+		fout << "rapidFireDelay3 =" + std::to_string(g_Profile->config.rapidFireDelay[2]) << std::endl;
+		fout << "rapidADSFlag3 =" + std::to_string(g_Profile->config.rapidADSFlag[2]) + "\n\n";
 		fout.close();
 		return;
 	}
@@ -55,17 +82,77 @@ namespace UniCoil {
 	void Console::LoadCFG()
 	{
 		std::ifstream fin;
-		std::string Word = "";
+		std::string Word;
+		
+		//	Open config file
 		fin.open("settings.ini", std::ifstream::in);
-		for (int i = 0; i <= 3; i++) {		
-			fin >> Word;
-			g_LauncherVariables->cfgColors.push_back(std::stof(Word));
-		}
 
-		g_LauncherVariables->m_CustomColors.x = g_LauncherVariables->cfgColors[0];
-		g_LauncherVariables->m_CustomColors.y = g_LauncherVariables->cfgColors[1];
-		g_LauncherVariables->m_CustomColors.z = g_LauncherVariables->cfgColors[2];
-		g_LauncherVariables->m_CustomColors.w = g_LauncherVariables->cfgColors[3];
+		// Read line by line until end of file is reached
+		while (getline(fin, Word)) {
+			
+			//	Retrieve contents after '='
+			std::istringstream sin(Word.substr(Word.find("=") + 1));
+
+			//	Convert the contents to a string
+			std::string input = sin.str();
+
+			/// <summary>
+			/// MENU THEME
+			if (Word.find("COLORR") != -1) {
+				float var = std::stof(input);
+				g_Profile->m_CustomColors.x = (var / 255);
+			}
+			
+			if (Word.find("COLORG") != -1) {
+				float var = std::stof(input);
+				g_Profile->m_CustomColors.y = (var / 255);
+			}
+			
+			if (Word.find("COLORB") != -1) {
+				float var = std::stof(input);
+				g_Profile->m_CustomColors.z = (var / 255);
+			}
+			
+			if (Word.find("COLORA") != -1) {
+				float var = std::stof(input);
+				g_Profile->m_CustomColors.w = (var / 255);
+			}
+
+			/// <summary>
+			/// RECOIL & RAPID FIRE
+			if (Word.find("recoilStrength1") != -1)
+				g_Profile->config.recoilStrength[0] = std::stoi(input);
+			if (Word.find("recoilDelay1") != -1)
+				g_Profile->config.recoilDelay[0] = std::stoi(input);
+			if (Word.find("recoilADSFlag1") != -1)
+				g_Profile->config.recoilADSFlag[0] = std::stoi(input);
+			if (Word.find("rapidFireDelay1") != -1)
+				g_Profile->config.rapidFireDelay[0] = std::stoi(input);
+			if (Word.find("rapidADSFlag1") != -1)
+				g_Profile->config.rapidADSFlag[0] = std::stoi(input);
+
+			if (Word.find("recoilStrength2") != -1)
+				g_Profile->config.recoilStrength[1] = std::stoi(input);
+			if (Word.find("recoilDelay2") != -1)
+				g_Profile->config.recoilDelay[1] = std::stoi(input);
+			if (Word.find("recoilADSFlag2") != -1)
+				g_Profile->config.recoilADSFlag[01] = std::stoi(input);
+			if (Word.find("rapidFireDelay2") != -1)
+				g_Profile->config.rapidFireDelay[1] = std::stoi(input);
+			if (Word.find("rapidADSFlag2") != -1)
+				g_Profile->config.rapidADSFlag[1] = std::stoi(input);
+
+			if (Word.find("recoilStrength3") != -1)
+				g_Profile->config.recoilStrength[2] = std::stoi(input);
+			if (Word.find("recoilDelay3") != -1)
+				g_Profile->config.recoilDelay[2] = std::stoi(input);
+			if (Word.find("recoilADSFlag3") != -1)
+				g_Profile->config.recoilADSFlag[2] = std::stoi(input);
+			if (Word.find("rapidFireDelay3") != -1)
+				g_Profile->config.rapidFireDelay[2] = std::stoi(input);
+			if (Word.find("rapidADSFlag3") != -1)
+				g_Profile->config.rapidADSFlag[2] = std::stoi(input);
+		}
 		fin.close();
 		return;
 	}

@@ -12,9 +12,9 @@ namespace UniCoil {
 
 	void DXWindow::Initialize()
 	{
-        wc = { sizeof(WNDCLASSEX), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(NULL), LoadIcon(g_LauncherVariables->hInstance, MAKEINTRESOURCE(IDI_ICON1)),
+        wc = { sizeof(WNDCLASSEX), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(NULL), LoadIcon(g_Profile->hInstance, MAKEINTRESOURCE(IDI_ICON1)),
             NULL, NULL, NULL, _T("NightFyre DirextX Window"),
-            LoadIcon(g_LauncherVariables->hInstance, MAKEINTRESOURCE(IDI_APPLICATION))
+            LoadIcon(g_Profile->hInstance, MAKEINTRESOURCE(IDI_APPLICATION))
         };
 
         ::RegisterClassEx(&wc);
@@ -57,10 +57,10 @@ namespace UniCoil {
             ::TranslateMessage(&msg);
             ::DispatchMessage(&msg);
             if (msg.message == WM_QUIT)
-                g_LauncherVariables->m_LauncherRunning = FALSE;
+                g_Launcher->m_LauncherRunning = FALSE;
         }
 
-        if (!g_LauncherVariables->m_LauncherRunning) {
+        if (!g_Launcher->m_LauncherRunning) {
             g_Running = FALSE;
             return;
         }
