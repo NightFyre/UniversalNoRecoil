@@ -1,6 +1,12 @@
 # UniversalNoRecoil
 Mouse script to simulate a No Recoil Cheat
 
+NOTE: Having this program running while ModernWarfare, Warzone, BOCW or Vanguard running will result in an immediate ban.
+Whether or not you use it. Any program running which uses Dear ImGui will typically automatically ban you while those games are running.
+If you would like to use this program on any of the mentioned games , I suggest you use the console app as they do not detect it.
+They detect strings in Dear ImGui and I have no intention of making this version of ImGui sig proof. That is not what this repository is for.
+You have been warned. Do not bother me with your useless ban complaints, you used a cheat. DUR
+
 ### Example
 ![image](https://i.ibb.co/18P0ph2/ezgif-com-gif-maker.gif)
 
